@@ -12,8 +12,8 @@ import { CommonModule } from '@angular/common';
   declarations: [],
   imports: [
     CommonModule,
-    RouterModule,
-    DashboardModule,
+    RouterModule, //
+    DashboardModule, //
     OrdersModule,CustomersModule,ProductsModule // Bütün component modüllerinin buraya import edilmesi gerek.
   ]
 })
