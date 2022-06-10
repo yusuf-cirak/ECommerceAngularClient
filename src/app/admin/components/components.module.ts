@@ -1,3 +1,4 @@
+import { RouterModule } from '@angular/router';
 import { ProductsModule } from './products/products.module';
 import { DashboardModule } from './dashboard/dashboard.module';
 import { CustomersModule } from './customers/customers.module';
@@ -11,6 +12,7 @@ import { CommonModule } from '@angular/common';
   declarations: [],
   imports: [
     CommonModule,
+    RouterModule,
     DashboardModule,
     OrdersModule,CustomersModule,ProductsModule // Bütün component modüllerinin buraya import edilmesi gerek.
   ]

@@ -2,6 +2,7 @@ import { ComponentsModule } from './components/components.module';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { LayoutComponent } from './layout.component';
+import { RouterModule } from '@angular/router';
 
 
 
@@ -11,7 +12,9 @@ import { LayoutComponent } from './layout.component';
   ],
   imports: [
     CommonModule,
-    ComponentsModule // component modüllerini import etmeliyiz.
+    ComponentsModule, // component modüllerini import etmeliyiz.
+    RouterModule // router-outlet ile route işlemleri yapabilmek için RouterModule import ediyoruz.
+
   ],
   exports:[
     LayoutComponent // layout component'i kullanacağımız için export etmeliyiz.
