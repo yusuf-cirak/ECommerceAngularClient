@@ -1,4 +1,4 @@
-import { AlertifyService, MessageType, Position } from './../../../services/admin/alertify.service';
+import { AlertifyService, AlertifyMessageType, AlertifyPosition } from './../../../services/admin/alertify.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
