@@ -14,4 +14,8 @@ export class AppComponent {
     toastrService.message('merhaba','yusuf',{messageType:ToastrMessageType.Info,position:ToastrPosition.BottomLeft})
   }
 
+
 }
+
+$.get("https://localhost:7079/api/Tests",data=>console.log(data))
+
