@@ -10,12 +10,11 @@ import { BaseComponent, SpinnerType } from 'src/app/base/base.component';
 })
 export class DashboardComponent extends BaseComponent implements OnInit {
 
-  constructor(private alertifyService:AlertifyService,spinner:NgxSpinnerService) {
+  constructor(spinner:NgxSpinnerService) {
     super(spinner)
    }
 
   ngOnInit(): void {
-    this.alertifyService.message('asd',{})
     this.showSpinner(SpinnerType.BallAtom)
 
   }
