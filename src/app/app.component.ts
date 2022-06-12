@@ -17,5 +17,4 @@ export class AppComponent {
 
 }
 
-$.get("https://localhost:7079/api/Tests",data=>console.log(data))
 
