@@ -9,11 +9,13 @@ export class HttpClientService {
 
   constructor(private httpClient:HttpClient,@Inject("baseUrl") private baseUrl:string) { }
 
-  private getUrl(requestParameter:Partial<RequestParameters>,idParam?:string){ // Her istekte url ayarlamamız gerek. O yüzden kod tekrarı yapmamak için fonksiyon yazıyoruz.
+  private url(requestParameter:Partial<RequestParameters>,idParam?:string){
+    // Her istekte url ayarlamamız gerek. O yüzden kod tekrarı yapmamak için fonksiyon yazıyoruz.
     let url:string='';
-    if(requestParameter.fullEndPoint) url=requestParameter.fullEndPoint;
+    if(requestParameter.fullEndPoint) url=requestParameter.fullEndPoint; //
     else{
-      url=`${requestParameter.baseUrl?requestParameter.baseUrl:this.baseUrl}/${requestParameter.controller}${requestParameter.action?`/${requestParameter.action}`:''}` // set url with controller/actions
+      url=`${requestParameter.baseUrl?requestParameter.baseUrl:this.baseUrl}/${requestParameter.controller}
+      ${requestParameter.action?`/${requestParameter.action}`:''}` // set url with controller/actions
 
        /* 1. ternany operator : baseUrl verilmiş mi? verildiyse baseUrl değişti demektir, verileni dön. Verilmediyse provider'daki baseUrl'yi dön.
           2. ternany operator : req parameter'da action var mı? Varsa o action'ı dön, yoksa boş string dön.
@@ -29,21 +31,20 @@ export class HttpClientService {
     return url;
   }
 
-  get<T>(requestParameter:Partial<RequestParameters>,id?:string){
-    return this.httpClient.get<T>(this.getUrl(requestParameter,id),{headers:requestParameter.headers})
+  get<T>(requestParameter:Partial<RequestParameters>,id?:string):Observable<T>{
+    return this.httpClient.get<T>(this.url(requestParameter,id),{headers:requestParameter.headers})
   }
 
   post<T>(requestParameter:Partial<RequestParameters>,body:Partial<T>): Observable<T>{
-    return this.httpClient.post<T>(this.getUrl(requestParameter),body,{headers:requestParameter.headers})
+    return this.httpClient.post<T>(this.url(requestParameter),body,{headers:requestParameter.headers})
   }
 
   put<T>(requestParameter:Partial<RequestParameters>,body:Partial<T>):Observable<T>{
-    return this.httpClient.put<T>(this.getUrl(requestParameter),body,{headers:requestParameter.headers})
+    return this.httpClient.put<T>(this.url(requestParameter),body,{headers:requestParameter.headers})
   }
   delete(requestParameter:Partial<RequestParameters>,id:string){
-    return this.httpClient.delete(this.getUrl(requestParameter,id))
+    return this.httpClient.delete(this.url(requestParameter,id))
   }
-
 
 }
 
