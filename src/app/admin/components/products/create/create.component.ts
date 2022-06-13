@@ -18,31 +18,21 @@ export class CreateComponent extends BaseComponent implements OnInit {
 
   ngOnInit(): void {
   }
-  // create(name:HTMLInputElement,stock:HTMLInputElement,price:HTMLInputElement){
-  //   const createProduct:CreateProduct=new CreateProduct();
-  //   this.showSpinner(SpinnerType.BallSpinClockwiseFadeRotating)
-  //   createProduct.name=name.value;
-  //   createProduct.price=parseFloat(price.value)
-  //   createProduct.stock=parseInt(stock.value)
-
-  //   this.productService.create(createProduct,()=>{
-  //     this.hideSpinner(SpinnerType.BallSpinClockwiseFadeRotating)
-  //     this.alertifyService.message('Ürün başarıyla kaydedildi',{dismisOthers:true,delay:3,messageType:AlertifyMessageType.Success,position:AlertifyPosition.TopRight})
-  //   })
-
-  // }
-
- async create (name:HTMLInputElement,stock:HTMLInputElement,price:HTMLInputElement){
-  const createProduct:CreateProduct=new CreateProduct();
+  create(name:HTMLInputElement,stock:HTMLInputElement,price:HTMLInputElement){
+    const createProduct:CreateProduct=new CreateProduct();
     this.showSpinner(SpinnerType.BallSpinClockwiseFadeRotating)
     createProduct.name=name.value;
     createProduct.price=parseFloat(price.value)
     createProduct.stock=parseInt(stock.value)
 
-    await this.productService.create(createProduct,()=>{
+    this.productService.create(createProduct,()=>{
       this.hideSpinner(SpinnerType.BallSpinClockwiseFadeRotating)
       this.alertifyService.message('Ürün başarıyla kaydedildi',{dismisOthers:true,delay:3,messageType:AlertifyMessageType.Success,position:AlertifyPosition.TopRight})
+    },errorMessage=>{
+      this.alertifyService.message(errorMessage,{dismisOthers:true,messageType:AlertifyMessageType.Error,position:AlertifyPosition.TopRight});
     })
 
+  }
+
 }
-}
+
