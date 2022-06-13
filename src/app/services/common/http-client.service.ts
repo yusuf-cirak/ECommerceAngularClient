@@ -14,15 +14,21 @@ export class HttpClientService {
     let url:string='';
     if(requestParameter.fullEndPoint) url=requestParameter.fullEndPoint; //
     else{
-      url=`${requestParameter.baseUrl?requestParameter.baseUrl:this.baseUrl}/${requestParameter.controller}
-      ${requestParameter.action?`/${requestParameter.action}`:''}` // set url with controller/actions
 
-       /* 1. ternany operator : baseUrl verilmiş mi? verildiyse baseUrl değişti demektir, verileni dön. Verilmediyse provider'daki baseUrl'yi dön.
-          2. ternany operator : req parameter'da action var mı? Varsa o action'ı dön, yoksa boş string dön.
-       Burada dikkat edilmesi gereken req parameter.controller yazdıktan sonra / koymadık. Çünkü action olabilir veya olmayabilir, yani duruma göre konulacak.
-       Bundan dolayı req parameter.action'ı dönüyoruz.
-    */
-    url+=`${idParam?`/${idParam}`:''}${requestParameter.queryString?`?${requestParameter.queryString}`:''}`
+      url=`${requestParameter.baseUrl?requestParameter.baseUrl:this.baseUrl}/${requestParameter.controller}`
+      /*
+      1. ternany operator : requestParameter'da baseUrl değeri var mı? varsa url'ye ekle yoksa basedeki baseUrl'yi ekle
+      */
+
+
+
+      url+=`${requestParameter.action?`/${requestParameter.action}`:''}`
+
+      /*
+      ternany operator : action var mı? varsa /action şeklinde ekle, yoksa bir şey ekleme.
+      */
+
+    url+=`${idParam?`/${idParam}`:""}${requestParameter.queryString?`?${requestParameter.queryString}`:""}`
     /*
     1. ternany operator: id değeri varsa /id şeklinde endpoint'i genişlet, yoksa boş string dön
     2. ternany operator: queryString varsa ?queryString şeklinde dön, yoksa boş string dön
@@ -53,7 +59,7 @@ export class HttpClientService {
 
 export class RequestParameters{
   // API controller, action
-  controller?:string; // API Controller
+  controller:string; // API Controller
   action?:string;
 
   // Http header,query string, baseUrl
