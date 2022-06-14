@@ -18,13 +18,9 @@ export class ProductService {
       .subscribe(result => {
         successCallBack();
       }, (errorResponse: HttpErrorResponse) => {
-        const _error: Array<{ key: string, value: Array<string> }> = errorResponse.error;
         let message = "";
-        _error.forEach((v, index) => {
-          v.value.forEach((_v, _index) => {
-            message += `${_v}<br>`;
-          });
-        });
+        const _errorValues=(Object.values(errorResponse.error.errors))
+        _errorValues.forEach(msg=>message+=`${msg}<br>`)
         errorCallBack(message);
       });
   }

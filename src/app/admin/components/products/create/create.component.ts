@@ -27,9 +27,9 @@ export class CreateComponent extends BaseComponent implements OnInit {
 
     this.productService.create(createProduct,()=>{
       this.hideSpinner(SpinnerType.BallSpinClockwiseFadeRotating)
-      this.alertifyService.message('Ürün başarıyla kaydedildi',{dismisOthers:true,delay:3,messageType:AlertifyMessageType.Success,position:AlertifyPosition.TopRight})
+      this.alertifyService.message('Ürün başarıyla kaydedildi',{dismissOthers:true,delay:3,messageType:AlertifyMessageType.Success,position:AlertifyPosition.TopRight})
     },errorMessage=>{
-      this.alertifyService.message(errorMessage,{dismisOthers:true,messageType:AlertifyMessageType.Error,position:AlertifyPosition.TopRight});
+      this.alertifyService.message(errorMessage,{dismissOthers:true,messageType:AlertifyMessageType.Error,position:AlertifyPosition.TopRight});
     })
 
   }

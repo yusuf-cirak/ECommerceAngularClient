@@ -14,7 +14,7 @@ export class AlertifyService {
     alertify.set('notifier','position',options.position) // notifier pozisyonu, default olarak bottomleft
     const msg=alertify[options.messageType](message);
 
-    if(options.dismisOthers) msg.dismissOthers(); // Sadece tek bir notification çıkmasına izin verir.
+    if(options.dismissOthers) msg.dismissOthers(); // Sadece tek bir notification çıkmasına izin verir.
   }
 
   dissmisAll(){ // Bütün notification'ları siler.
@@ -28,7 +28,7 @@ export class AlertifyOptions{
   messageType:AlertifyMessageType=AlertifyMessageType.Message;
   position:AlertifyPosition=AlertifyPosition.BottomLeft;
   delay:number=3;
-  dismisOthers:boolean=false;
+  dismissOthers:boolean=false;
 }
 
 export enum AlertifyMessageType{
