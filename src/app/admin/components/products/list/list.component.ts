@@ -7,6 +7,8 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
 
+declare var $:any;
+
 @Component({
   selector: 'app-list',
   templateUrl: './list.component.html',
@@ -17,7 +19,7 @@ export class ListComponent extends BaseComponent implements OnInit {
   constructor(spinner:NgxSpinnerService,private productService:ProductService,private alertifyService:AlertifyService) {
     super(spinner)
    }
-  displayedColumns: string[] = ['name', 'price', 'stock','createdTime','updatedTime'];
+  displayedColumns: string[] = ['name', 'price', 'stock','createdTime','updatedTime','update','delete'];
   dataSource:MatTableDataSource<ListProduct>=null
   @ViewChild(MatPaginator) paginator:MatPaginator
 
@@ -34,8 +36,6 @@ export class ListComponent extends BaseComponent implements OnInit {
     this.dataSource=new MatTableDataSource<ListProduct>(allProducts.products);
     this.paginator.length=allProducts.totalCount
   }
-
-
 
    ngOnInit():void  {
     this.getProducts();

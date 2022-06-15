@@ -1,3 +1,4 @@
+import { DeleteDirective } from './../../../directives/admin/delete.directive';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ProductsComponent } from './products.component';
@@ -18,7 +19,8 @@ import {MatPaginatorModule} from '@angular/material/paginator';
   declarations: [
     ProductsComponent,
     CreateComponent,
-    ListComponent
+    ListComponent,
+    DeleteDirective
   ],
   imports: [
     CommonModule,
