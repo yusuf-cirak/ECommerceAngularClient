@@ -1,3 +1,4 @@
+import { DeleteDialogComponent } from './dialogs/delete-dialog/delete-dialog.component';
 import { UiModule } from './ui/ui.module';
 import { AdminModule } from './admin/admin.module';
 import { NgModule } from '@angular/core';
@@ -13,7 +14,7 @@ import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
   ],
   imports: [
     BrowserModule,
@@ -22,7 +23,7 @@ import { HttpClientModule } from '@angular/common/http';
     AppRoutingModule,
     NgxSpinnerModule,
     AdminModule,UiModule,
-    HttpClientModule // HttpClientModule globally
+    HttpClientModule, // HttpClientModule globally
   ],
   providers: [
     {provide:"baseUrl",useValue:"https://localhost:7079/api",multi:true} //

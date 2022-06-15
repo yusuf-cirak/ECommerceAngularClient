@@ -28,6 +28,13 @@ export class ListComponent extends BaseComponent implements OnInit {
   }
 
 
+   async getProductsAfterDelete(){
+    if(this.paginator.length%this.paginator.pageSize==1){
+      this.paginator.pageIndex=this.paginator.pageIndex-1
+    }
+    await this.getProducts()
+  }
+
   async getProducts(){
     this.showSpinner(SpinnerType.BallAtom)
    const allProducts:{totalCount:number,products:ListProduct[]} =await this.productService.read(this.paginator?this.paginator.pageIndex:0,
