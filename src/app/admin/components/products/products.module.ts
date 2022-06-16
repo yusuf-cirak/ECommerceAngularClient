@@ -1,3 +1,4 @@
+import { FileUploadModule } from './../../../services/common/file-upload/file-upload.module';
 import { DeleteDialogComponent } from './../../../dialogs/delete-dialog/delete-dialog.component';
 import { DeleteDirective } from './../../../directives/admin/delete.directive';
 import { NgModule } from '@angular/core';
@@ -30,7 +31,8 @@ import {MatDialogModule} from '@angular/material/dialog';
     RouterModule.forChild([
       {path:"",component:ProductsComponent}
     ]),
-    MatSidenavModule,MatFormFieldModule,MatInputModule,MatButtonModule,MatTableModule,MatPaginatorModule,MatDialogModule
+    MatSidenavModule,MatFormFieldModule,MatInputModule,MatButtonModule,MatTableModule,MatPaginatorModule,MatDialogModule,
+    FileUploadModule
 
   ]
 })
