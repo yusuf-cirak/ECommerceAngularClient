@@ -1,3 +1,4 @@
+import { MatButtonModule } from '@angular/material/button';
 import { MatDialogModule } from '@angular/material/dialog';
 import { FileUploadDialogComponent } from './file-upload-dialog/file-upload-dialog.component';
 import { DeleteDialogComponent } from './delete-dialog/delete-dialog.component';
@@ -10,7 +11,8 @@ import { NgModule } from "@angular/core";
   declarations:[DeleteDialogComponent,FileUploadDialogComponent],
   imports:[
     CommonModule,
-    MatDialogModule
+    MatDialogModule,
+    MatButtonModule // Button css'i için
   ]
 
 })

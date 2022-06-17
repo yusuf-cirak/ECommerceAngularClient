@@ -1,3 +1,5 @@
+import { MatDialogModule } from '@angular/material/dialog';
+import { DialogModule } from './../../../dialogs/dialog.module';
 import { FileUploadModule } from './../../../services/common/file-upload/file-upload.module';
 import { DeleteDialogComponent } from './../../../dialogs/delete-dialog/delete-dialog.component';
 import { DeleteDirective } from './../../../directives/admin/delete.directive';
@@ -13,7 +15,6 @@ import {MatInputModule} from '@angular/material/input';
 import {MatButtonModule} from '@angular/material/button';
 import {MatTableModule} from '@angular/material/table';
 import {MatPaginatorModule} from '@angular/material/paginator';
-import {MatDialogModule} from '@angular/material/dialog';
 
 
 
@@ -30,7 +31,9 @@ import {MatDialogModule} from '@angular/material/dialog';
     RouterModule.forChild([
       {path:"",component:ProductsComponent}
     ]),
-    MatSidenavModule,MatFormFieldModule,MatInputModule,MatButtonModule,MatTableModule,MatPaginatorModule,MatDialogModule,
+    MatSidenavModule,MatFormFieldModule,MatInputModule,MatButtonModule,MatTableModule,MatPaginatorModule,
+    DialogModule,
+    MatDialogModule,
     FileUploadModule
 
   ]
