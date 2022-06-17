@@ -24,7 +24,6 @@ import {MatDialogModule} from '@angular/material/dialog';
     CreateComponent,
     ListComponent,
     DeleteDirective,
-    DeleteDialogComponent //
   ],
   imports: [
     CommonModule,
