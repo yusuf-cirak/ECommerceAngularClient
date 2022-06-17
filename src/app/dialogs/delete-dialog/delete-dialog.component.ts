@@ -1,4 +1,4 @@
-import { BaseDialog } from './../base-dialog';
+import { BaseDialog } from '../../base/base-dialog';
 import { Component, Inject } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 
