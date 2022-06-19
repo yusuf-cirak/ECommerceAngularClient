@@ -1,3 +1,5 @@
+import { SpinnerType } from 'src/app/base/base.component';
+import { NgxSpinnerService } from 'ngx-spinner';
 import { AlertifyMessageType, AlertifyService } from './../../admin/alertify.service';
 import { HttpClientService } from './../http-client.service';
 import { Component, Input } from '@angular/core';
@@ -10,7 +12,7 @@ import { HttpHeaders, HttpErrorResponse } from '@angular/common/http';
   styleUrls: ['./file-upload.component.scss'],
 })
 export class FileUploadComponent {
-  constructor(private httpClientService:HttpClientService,private alertifyService:AlertifyService){}
+  constructor(private httpClientService:HttpClientService,private alertifyService:AlertifyService,private spinner:NgxSpinnerService){}
   public files: NgxFileDropEntry[];
 
   @Input() options:Partial<FileUploadOptions>
@@ -30,10 +32,10 @@ export class FileUploadComponent {
         action:this.options.action,
         queryString:this.options.queryString,
         headers:new HttpHeaders({"responseType":"blob"})
-    },fileData).subscribe(data=>{
-     this.alertifyService.message(`${data} başarıyla yüklenmiştir.`,{messageType:AlertifyMessageType.Success})
+    },fileData).subscribe(()=>{
+     this.alertifyService.message(`Dosyalar başarıyla yüklenmiştir.`,{messageType:AlertifyMessageType.Success})
     },(errorResponse:HttpErrorResponse)=>{
-      this.alertifyService.message('Dosyalar yüklenirken beklenilmedik bir hata oluştur',{messageType:AlertifyMessageType.Error})
+      this.alertifyService.message('Dosyalar yüklenirken beklenilmedik bir hata oluştu',{messageType:AlertifyMessageType.Error})
         })
 
   }
