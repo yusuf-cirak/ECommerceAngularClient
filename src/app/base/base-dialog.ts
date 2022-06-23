@@ -4,7 +4,7 @@ export class BaseDialog<DialogComponent> {
 
 
   constructor(public dialogRef:MatDialogRef<DialogComponent>,
-     public data:any){}
+     /*public data:any*/){}
 
 
 
