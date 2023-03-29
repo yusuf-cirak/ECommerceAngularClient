@@ -15,7 +15,7 @@ export class HttpClientService {
     if(requestParameter.fullEndPoint) url=requestParameter.fullEndPoint; //
     else{
 
-      url=`${requestParameter.baseUrl?requestParameter.baseUrl:this.baseUrl}/${requestParameter.controller}`
+      url=`${requestParameter.baseUrl ?? this.baseUrl}/${requestParameter.controller}`
       /*
       1. ternany operator : requestParameter'da baseUrl değeri var mı? varsa url'ye ekle yoksa basedeki baseUrl'yi ekle
       */
@@ -38,15 +38,15 @@ export class HttpClientService {
   }
 
   get<T>(requestParameter:Partial<RequestParameters>,id?:string):Observable<T>{
-    return this.httpClient.get<T>(this.url(requestParameter,id),{headers:requestParameter.headers})
+    return this.httpClient.get<T>(this.url(requestParameter,id),{headers:requestParameter.headers,withCredentials:requestParameter.withCredentials})
   }
 
   post<T>(requestParameter:Partial<RequestParameters>,body:Partial<T>): Observable<T>{
-    return this.httpClient.post<T>(this.url(requestParameter),body,{headers:requestParameter.headers})
+    return this.httpClient.post<T>(this.url(requestParameter),body,{headers:requestParameter.headers,withCredentials:requestParameter.withCredentials})
   }
 
   put<T>(requestParameter:Partial<RequestParameters>,body:Partial<T>):Observable<T>{
-    return this.httpClient.put<T>(this.url(requestParameter),body,{headers:requestParameter.headers})
+    return this.httpClient.put<T>(this.url(requestParameter),body,{headers:requestParameter.headers,withCredentials:requestParameter.withCredentials})
   }
   delete(requestParameter:Partial<RequestParameters>,id:string){
     return this.httpClient.delete(this.url(requestParameter,id))
@@ -69,4 +69,5 @@ export class RequestParameters{
 
   // Other services (might have different routes)
   fullEndPoint?:string // Dış dünyayla iletişime geçmemiz gerekebilir, dış dünyadaki servisin route'ı bizimkiyle uyuşmayabilir.
+  withCredentials?: boolean;
 }
